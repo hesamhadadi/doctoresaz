@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" fill="none">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#171B1E"/><stop offset="1" stop-color="#0D0F11"/></linearGradient>
+<radialGradient id="glow" cx="50%" cy="42%" r="55%"><stop offset="0" stop-color="#2FC2B4" stop-opacity="0.20"/><stop offset="1" stop-color="#2FC2B4" stop-opacity="0"/></radialGradient>
+<linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C77B33"/><stop offset="0.5" stop-color="#8A4614"/><stop offset="1" stop-color="#5F3015"/></linearGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#bg)"/><rect width="800" height="1000" fill="url(#glow)"/>
+<g transform="translate(400 500) rotate(28)">
+  <!-- بدنه‌ی استرات -->
+  <path d="M-70 120 C-150 120 -175 60 -150 10 C-135 -20 -150 -70 -120 -95 C-90 -120 -30 -110 10 -110 C60 -110 95 -95 100 -45 C150 -40 165 20 130 70 C100 115 20 120 -70 120 Z" fill="url(#wood)" stroke="#C77B33" stroke-width="2"/>
+  <!-- پیک‌آپ‌ها -->
+  <rect x="-60" y="-40" width="70" height="16" rx="4" fill="#F2E6CE"/>
+  <rect x="-55" y="0" width="70" height="16" rx="4" fill="#F2E6CE"/>
+  <!-- دسته -->
+  <rect x="-14" y="-360" width="28" height="255" rx="6" fill="#5F3015" stroke="#C77B33" stroke-width="1.5"/>
+  <g stroke="#2FC2B4" stroke-width="2" opacity="0.5">
+    <line x1="-14" y1="-140" x2="14" y2="-140"/><line x1="-14" y1="-180" x2="14" y2="-180"/><line x1="-14" y1="-220" x2="14" y2="-220"/><line x1="-14" y1="-260" x2="14" y2="-260"/><line x1="-14" y1="-300" x2="14" y2="-300"/>
+  </g>
+  <!-- هد -->
+  <path d="M-22 -360 L22 -360 L26 -430 L-30 -430 Z" fill="url(#wood)" stroke="#C77B33" stroke-width="1.5"/>
+  <g fill="#F2E6CE"><circle cx="-32" cy="-380" r="6"/><circle cx="-36" cy="-400" r="6"/><circle cx="-40" cy="-420" r="6"/><circle cx="26" cy="-378" r="6"/></g>
+  <!-- سیم‌ها -->
+  <g stroke="#F2E6CE" stroke-width="1.2" opacity="0.85"><line x1="-8" y1="70" x2="-8" y2="-360"/><line x1="-3" y1="70" x2="-3" y2="-360"/><line x1="3" y1="70" x2="3" y2="-360"/><line x1="8" y1="70" x2="8" y2="-360"/></g>
+</g>
+<g opacity="0.55" transform="translate(400 930)" text-anchor="middle" font-family="Vazirmatn, sans-serif"><circle cx="-70" cy="-5" r="3" fill="#E89B2E"/><text x="0" y="0" fill="#8E9AA1" font-size="26" font-weight="700">دکتر ساز</text></g>
+</svg>

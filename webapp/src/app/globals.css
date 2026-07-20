@@ -1,0 +1,190 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+@import url('https://cdn.fontcdn.ir/Font/Persian/Dana/Dana.css');
+
+@font-face { font-family:'IRANSansX'; src:url('/fonts/IRANSansX-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'IRANSansX'; src:url('/fonts/IRANSansX-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face { font-family:'IRANSansX'; src:url('/fonts/IRANSansX-DemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+@font-face { font-family:'IRANSansX'; src:url('/fonts/IRANSansX-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+@font-face { font-family:'IRANSansX'; src:url('/fonts/IRANSansX-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── تم روشن (پیش‌فرض): کاهگلی + فیروزه + لاجورد ── */
+  :root {
+    color-scheme: light;
+    --nav-h: 68px;
+    --shadow: 90 70 40;
+    /* اسکیل کاغذ/کاهگلی — روشن به تیره */
+    --ink-950: 250 248 244; --ink-900: 244 240 233; --ink-850: 255 255 255; --ink-800: 240 235 227;
+    --ink-750: 232 226 216; --ink-700: 216 208 195; --ink-600: 178 170 156; --ink-500: 140 132 118;
+    --ink-400: 110 103 91; --ink-300: 80 74 64; --ink-200: 54 50 43; --ink-100: 38 35 30; --ink-50: 26 24 20;
+    /* فیروزه — سایه‌های متن (۳۰۰/۴۰۰) عمیق برای خوانایی روی کرم */
+    --fz-50:234 251 248; --fz-100:201 245 238; --fz-200:149 234 223; --fz-300:15 133 123; --fz-400:16 106 99;
+    --fz-500:23 164 151; --fz-600:15 133 123; --fz-700:16 106 99; --fz-800:18 84 80; --fz-900:19 70 67;
+    /* زعفران — ۳۰۰ عمیق برای متن، ۴۰۰ زنده برای دکمه */
+    --zf-50:254 247 236; --zf-100:251 233 201; --zf-200:247 208 143; --zf-300:173 95 18; --zf-400:232 155 46;
+    --zf-500:208 126 23; --zf-600:173 95 18; --zf-700:138 70 20; --zf-800:113 57 22; --zf-900:95 48 21;
+  }
+  /* ── تم تیره ── */
+  .dark {
+    color-scheme: dark;
+    --shadow: 0 0 0;
+    --ink-950: 8 9 10; --ink-900: 13 15 17; --ink-850: 18 21 23; --ink-800: 23 27 30;
+    --ink-750: 29 34 38; --ink-700: 37 44 49; --ink-600: 51 60 66; --ink-500: 74 85 92;
+    --ink-400: 107 120 128; --ink-300: 142 154 161; --ink-200: 183 192 197; --ink-100: 220 226 229; --ink-50: 242 245 246;
+    --fz-50:234 251 248; --fz-100:201 245 238; --fz-200:149 234 223; --fz-300:92 217 203; --fz-400:47 194 180;
+    --fz-500:23 164 151; --fz-600:15 133 123; --fz-700:16 106 99; --fz-800:18 84 80; --fz-900:19 70 67;
+    --zf-50:254 247 236; --zf-100:251 233 201; --zf-200:247 208 143; --zf-300:240 180 85; --zf-400:232 155 46;
+    --zf-500:208 126 23; --zf-600:173 95 18; --zf-700:138 70 20; --zf-800:113 57 22; --zf-900:95 48 21;
+  }
+
+  * { -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+
+  body {
+    @apply bg-ink-950 text-ink-100 font-sans antialiased;
+    margin: 0; font-feature-settings: 'ss01','ss02';
+    /* بافت ملایم کاهگلی/فیروزه‌ای */
+    background-image:
+      radial-gradient(ellipse 55% 40% at 10% -8%, rgba(23,164,151,.12), transparent 58%),
+      radial-gradient(ellipse 50% 40% at 100% 0%, rgba(232,155,46,.10), transparent 58%),
+      radial-gradient(ellipse 60% 50% at 50% 120%, rgba(27,58,87,.06), transparent 60%);
+    background-attachment: fixed;
+  }
+  .num, input[type='number'] { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: plaintext; }
+  h1,h2,h3,h4 { @apply font-display font-bold tracking-tight text-ink-50; text-wrap: balance; }
+  h1 { @apply text-3xl leading-[1.25] sm:text-4xl lg:text-5xl; }
+  h2 { @apply text-2xl leading-[1.3] sm:text-3xl; }
+  h3 { @apply text-xl leading-[1.35] sm:text-2xl; }
+  p { text-wrap: pretty; }
+  ::selection { background: rgba(23,164,151,.25); color: rgb(var(--ink-50)); }
+  :where(a,button,[role='button'],input,select,textarea,summary):focus-visible { @apply outline-none ring-2 ring-firooze-400/70 ring-offset-2 ring-offset-ink-950 rounded-md; }
+  ::-webkit-scrollbar { width:10px; height:10px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--ink-900)); }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--ink-700)); border-radius:999px; border:2px solid rgb(var(--ink-900)); }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--ink-600)); }
+}
+
+@layer components {
+  /* ── دکمه‌ها ── */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl px-5 text-sm font-medium
+      transition-all duration-200 ease-out disabled:pointer-events-none disabled:opacity-45;
+    min-height: 44px; /* هدف لمسی */
+  }
+  .btn-primary  { @apply btn bg-firooze-500 text-ink-950 font-semibold hover:bg-firooze-400 active:scale-[.98] shadow-glow; }
+  .btn-accent   { @apply btn bg-zaferan-400 text-ink-950 font-semibold hover:bg-zaferan-300 active:scale-[.98] shadow-glow-z; }
+  .btn-ghost    { @apply btn text-ink-200 hover:bg-ink-800 hover:text-ink-50 active:scale-[.98]; }
+  .btn-outline  { @apply btn border border-ink-700 bg-ink-900/60 text-ink-100 hover:border-firooze-500/60 hover:text-firooze-300 hover:bg-ink-850 active:scale-[.98]; }
+  .btn-danger   { @apply btn bg-danger/15 text-danger border border-danger/30 hover:bg-danger/25; }
+  .btn-sm       { @apply px-3.5 text-xs rounded-lg; min-height: 36px; }
+  .btn-lg       { @apply px-7 text-base rounded-2xl; min-height: 52px; }
+  .btn-icon     { @apply px-0; width: 44px; }
+
+  /* ── سطح‌ها ── */
+  .card       { @apply rounded-2xl border border-ink-750 bg-ink-850/70 backdrop-blur-sm; }
+  .card-hover { @apply card transition-all duration-300 ease-out hover:border-ink-600 hover:bg-ink-800/80 hover:shadow-lift; }
+  .panel      { @apply rounded-2xl border border-ink-750 bg-grad-ink; }
+
+  /* ── فرم ── */
+  .field { @apply mb-4; }
+  .label { @apply mb-2 block text-[13px] font-medium text-ink-200; }
+  .input, .select, .textarea {
+    @apply w-full rounded-xl border border-ink-700 bg-ink-900 px-4 py-3 text-sm text-ink-50
+      placeholder:text-ink-400 transition-colors duration-200
+      hover:border-ink-600 focus:border-firooze-500 focus:outline-none focus:ring-2 focus:ring-firooze-500/25;
+  }
+  .select { @apply cursor-pointer appearance-none bg-[length:16px] bg-[left_1rem_center] bg-no-repeat pl-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7880' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); }
+  .textarea { @apply min-h-[110px] resize-y leading-7; }
+  .hint  { @apply mt-1.5 text-xs text-ink-400; }
+  .error { @apply mt-1.5 flex items-center gap-1.5 text-xs text-danger; }
+  .checkbox { @apply h-5 w-5 cursor-pointer rounded-md border-ink-600 bg-ink-900 text-firooze-500 focus:ring-firooze-500/40; }
+
+  /* ── نشان‌ها ── */
+  .badge      { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium leading-none; }
+  .badge-free { @apply badge bg-firooze-500/12 text-firooze-300 ring-1 ring-inset ring-firooze-500/25; }
+  .badge-paid { @apply badge bg-zaferan-400/12 text-zaferan-300 ring-1 ring-inset ring-zaferan-400/25; }
+  .badge-neutral { @apply badge bg-ink-700/60 text-ink-200 ring-1 ring-inset ring-ink-600; }
+  .badge-danger  { @apply badge bg-danger/12 text-danger ring-1 ring-inset ring-danger/25; }
+
+  /* ── متن ── */
+  .eyebrow { @apply mb-3 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[.2em] text-firooze-400; }
+  .muted   { @apply text-ink-300; }
+  .link    { @apply text-firooze-300 underline-offset-4 transition-colors hover:text-firooze-200 hover:underline; }
+
+  /* ── چیدمان ── */
+  .section { @apply py-14 sm:py-20; }
+  .divider { @apply h-px w-full bg-gradient-to-l from-transparent via-ink-700 to-transparent; }
+
+  /* ── اسکلت بارگذاری ── */
+  .skeleton { @apply relative overflow-hidden rounded-xl bg-ink-800; }
+  .skeleton::after {
+    content: ''; @apply absolute inset-0 animate-shimmer;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.045), transparent);
+  }
+
+  /* ── جدول ── */
+  .table-wrap { @apply overflow-x-auto rounded-2xl border border-ink-750; }
+  .tbl { @apply w-full min-w-[640px] text-right text-sm; }
+  .tbl thead th { @apply whitespace-nowrap border-b border-ink-750 bg-ink-900/80 px-4 py-3.5 text-xs font-semibold text-ink-300; }
+  .tbl tbody td { @apply border-b border-ink-800/70 px-4 py-3.5 text-ink-100; }
+  .tbl tbody tr { @apply transition-colors hover:bg-ink-850/60; }
+  .tbl tbody tr:last-child td { @apply border-b-0; }
+}
+
+@layer utilities {
+  /* متن با گرادیان فیروزه‌ای */
+  .text-grad { @apply bg-grad-firooze bg-clip-text text-transparent; }
+  .text-grad-z { @apply bg-grad-zaferan bg-clip-text text-transparent; }
+
+  /* شیشه */
+  .glass { @apply border border-white/[.06] bg-ink-900/70 backdrop-blur-xl; }
+
+  /* نسبت تصویر */
+  .ratio-saz { aspect-ratio: 4 / 5; }
+
+  /* برش متن */
+  .clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  .clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* مخفی‌کردن اسکرول‌بار افقی */
+  .no-bar { scrollbar-width: none; }
+  .no-bar::-webkit-scrollbar { display: none; }
+
+  /* تأخیر پلکانی برای انیمیشن ورود */
+  .stagger > * { animation: fade-up .5s cubic-bezier(.22,1,.36,1) both; }
+  .stagger > *:nth-child(1) { animation-delay: .04s }
+  .stagger > *:nth-child(2) { animation-delay: .08s }
+  .stagger > *:nth-child(3) { animation-delay: .12s }
+  .stagger > *:nth-child(4) { animation-delay: .16s }
+  .stagger > *:nth-child(5) { animation-delay: .2s }
+  .stagger > *:nth-child(6) { animation-delay: .24s }
+  .stagger > *:nth-child(7) { animation-delay: .28s }
+  .stagger > *:nth-child(8) { animation-delay: .32s }
+
+  /* ریویل هنگام اسکرول با انیمیشن اسکرول-محورِ CSS مدرن.
+     در مرورگرهای پشتیبان (کروم/اج) هر آیتم موقع ورود به دید نرم بالا می‌آید؛
+     در بقیه‌ی مرورگرها آیتم‌ها عادی و کامل نمایش داده می‌شوند (بدون هیچ حرکت). */
+  .reveal-grid > * { opacity: 1; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-grid > * {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from { opacity: 0; transform: translateY(28px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
