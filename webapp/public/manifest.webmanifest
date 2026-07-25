@@ -1,0 +1,23 @@
+{
+  "name": "دکتر ساز | فروشگاه و آموزش ساز",
+  "short_name": "دکتر ساز",
+  "description": "فروشگاه سازهای دست‌ساز ایرانی و مدرسه‌ی آنلاین موسیقی",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF8F4",
+  "theme_color": "#17A497",
+  "dir": "rtl",
+  "lang": "fa-IR",
+  "categories": ["shopping", "music", "education"],
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "فروشگاه", "url": "/shop" },
+    { "name": "آموزش‌ها", "url": "/learn" },
+    { "name": "سبد خرید", "url": "/cart" }
+  ]
+}

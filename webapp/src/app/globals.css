@@ -1,0 +1,158 @@
+/* ═══════ یکان‌بخ ۴ پرو — نسخه‌ی FarsiNum (ارقام فارسی) ═══════
+   فونت متغیر (۶۷KB، همه‌ی وزن‌ها ۱۰۰–۹۰۰) برای بارگذاری سریع در موبایل،
+   با fallback به فایل‌های استاتیک برای مرورگرهای قدیمی‌تر. */
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('/fonts/YekanBakhFaNum-VF.woff2') format('woff2-variations'),
+       url('/fonts/YekanBakhFaNum-VF.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* fallback استاتیک (اگر فونت متغیر پشتیبانی نشد) */
+@font-face { font-family:'YekanBakhStatic'; src:url('/fonts/YekanBakhFaNum-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
+@font-face { font-family:'YekanBakhStatic'; src:url('/fonts/YekanBakhFaNum-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'YekanBakhStatic'; src:url('/fonts/YekanBakhFaNum-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+@font-face { font-family:'YekanBakhStatic'; src:url('/fonts/YekanBakhFaNum-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+@font-face { font-family:'YekanBakhStatic'; src:url('/fonts/YekanBakhFaNum-ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
+@font-face { font-family:'YekanBakhStatic'; src:url('/fonts/YekanBakhFaNum-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── تم روشن (پیش‌فرض): کاهگلی + فیروزه + لاجورد ── */
+  :root {
+    color-scheme: light;
+    --nav-h: 68px;
+    --shadow: 30 41 59;
+    /* خاکستری خنثی و تمیز — بدون ته‌رنگ */
+    --ink-950: 247 247 247; --ink-900: 242 242 242; --ink-850: 255 255 255; --ink-800: 235 235 235;
+    --ink-750: 226 226 226; --ink-700: 214 214 214; --ink-600: 168 168 168; --ink-500: 130 130 130;
+    --ink-400: 106 106 106; --ink-300: 71 71 71; --ink-200: 45 45 45; --ink-100: 28 28 28; --ink-50: 12 12 12;
+  }
+  /* ── تم تیره ── */
+  .dark {
+    color-scheme: dark;
+    --shadow: 0 0 0;
+    --ink-950: 8 9 10; --ink-900: 13 15 17; --ink-850: 18 21 23; --ink-800: 23 27 30;
+    --ink-750: 29 34 38; --ink-700: 37 44 49; --ink-600: 51 60 66; --ink-500: 74 85 92;
+    --ink-400: 107 120 128; --ink-300: 142 154 161; --ink-200: 183 192 197; --ink-100: 220 226 229; --ink-50: 242 245 246;
+    --fz-50:234 251 248; --fz-100:201 245 238; --fz-200:149 234 223; --fz-300:92 217 203; --fz-400:47 194 180;
+    --fz-500:23 164 151; --fz-600:15 133 123; --fz-700:16 106 99; --fz-800:18 84 80; --fz-900:19 70 67;
+    --zf-50:254 247 236; --zf-100:251 233 201; --zf-200:247 208 143; --zf-300:240 180 85; --zf-400:232 155 46;
+    --zf-500:208 126 23; --zf-600:173 95 18; --zf-700:138 70 20; --zf-800:113 57 22; --zf-900:95 48 21;
+  }
+
+  * { -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+
+  body {
+    @apply bg-ink-950 text-ink-100 font-sans antialiased;
+    margin: 0;
+  }
+  .num { font-variant-numeric: tabular-nums; }
+  input[type='number'] { direction: ltr; unicode-bidi: plaintext; }
+  /* تیترها: SemiBold (۶۰۰) — نه Black. دقیقاً مثل دیجی‌کالا/علی‌بابا */
+  h1,h2,h3,h4 { @apply font-display text-ink-50; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+  h1 { @apply text-[26px] leading-[1.35] sm:text-[32px] lg:text-[38px]; }
+  h2 { @apply text-[20px] leading-[1.4] sm:text-[24px]; }
+  h3 { @apply text-[16px] leading-[1.5] sm:text-[18px]; }
+  h4 { @apply text-[15px] leading-[1.5]; font-weight: 500; }
+  body { font-weight: 400; }
+  p { text-wrap: pretty; }
+  ::selection { background: rgba(23,164,151,.25); color: rgb(var(--ink-50)); }
+  :where(a,button,[role='button'],input,select,textarea,summary):focus-visible { @apply outline-none ring-2 ring-firooze-400/70 ring-offset-2 ring-offset-ink-950 rounded-md; }
+  ::-webkit-scrollbar { width:10px; height:10px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--ink-900)); }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--ink-700)); border-radius:999px; border:2px solid rgb(var(--ink-900)); }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--ink-600)); }
+}
+
+@layer components {
+  /* ═══ دکمه‌ها — تخت، شعاع کوچک، بدون افکت اضافه (مثل دیجی‌کالا) ═══ */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-lg px-5 text-[13px]
+      transition-[background-color,border-color,color,opacity] duration-150
+      disabled:pointer-events-none disabled:opacity-40 active:opacity-80;
+    font-weight: 500; min-height: 42px;
+  }
+  .btn-primary { @apply btn bg-firooze-600 text-white hover:bg-firooze-700; }
+  .btn-accent  { @apply btn bg-zaferan-500 text-white hover:bg-zaferan-600; }
+  .btn-ghost   { @apply btn text-ink-300 hover:bg-ink-800 hover:text-ink-50; }
+  .btn-outline { @apply btn border border-ink-700 bg-ink-850 text-ink-100 hover:border-firooze-600 hover:text-firooze-600; }
+  .btn-danger  { @apply btn border border-danger/40 bg-ink-850 text-danger hover:bg-danger/8; }
+  .btn-sm { @apply rounded-md px-3 text-[12px]; min-height: 34px; }
+  .btn-lg { @apply rounded-lg px-6 text-[15px]; min-height: 50px; }
+  .btn-icon { @apply px-0; width: 42px; }
+
+  /* ═══ سطح‌ها — کارت سفید با مرز نازک، بدون سایه‌ی سنگین ═══ */
+  .card { @apply rounded-xl border border-ink-750 bg-ink-850; }
+  .card-hover { @apply card transition-shadow duration-200 hover:shadow-[0_2px_16px_-4px_rgb(var(--shadow)/.14)]; }
+  .panel { @apply rounded-xl border border-ink-750 bg-ink-850; }
+
+  /* ═══ فرم ═══ */
+  .field { @apply mb-4; }
+  .label { @apply mb-2 block text-[13px] text-ink-200; font-weight: 500; }
+  .input, .select, .textarea {
+    @apply w-full rounded-lg border border-ink-700 bg-ink-850 px-3.5 py-2.5 text-[13px] text-ink-50
+      transition-colors duration-150 placeholder:text-ink-500
+      hover:border-ink-600 focus:border-firooze-600 focus:outline-none focus:ring-1 focus:ring-firooze-600/30;
+  }
+  .select { @apply cursor-pointer appearance-none bg-[length:15px] bg-[left_0.85rem_center] bg-no-repeat pl-9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23828282' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); }
+  .textarea { @apply min-h-[100px] resize-y leading-7; }
+  .hint { @apply mt-1.5 text-[11px] text-ink-400; }
+  .error { @apply mt-1.5 flex items-center gap-1.5 text-[11px] text-danger; }
+  .checkbox { @apply h-4 w-4 cursor-pointer rounded border-ink-600 bg-ink-850 text-firooze-600 focus:ring-firooze-600/30; }
+
+  /* ═══ نشان‌ها — کوچک و تخت ═══ */
+  .badge { @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] leading-5; font-weight: 500; }
+  .badge-free { @apply badge bg-firooze-500/10 text-firooze-700; }
+  .badge-paid { @apply badge bg-zaferan-500/12 text-zaferan-700; }
+  .badge-neutral { @apply badge bg-ink-800 text-ink-300; }
+  .badge-danger { @apply badge bg-danger/10 text-danger; }
+
+  /* ═══ متن ═══ */
+  .eyebrow { @apply mb-2 inline-block text-[12px] text-firooze-600; font-weight: 500; }
+  .muted { @apply text-ink-400; }
+  .link { @apply text-firooze-600 transition-colors hover:text-firooze-700 hover:underline; }
+  /* قیمت — بزرگ‌تر و Bold، امضای فروشگاه‌های ایرانی */
+  .price { @apply text-ink-50; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  .section { @apply py-7 sm:py-10; }
+  .divider { @apply h-px w-full bg-ink-750; }
+
+  .skeleton { @apply relative overflow-hidden rounded-lg bg-ink-800; }
+  .skeleton::after { content:''; @apply absolute inset-0 animate-shimmer;
+    background: linear-gradient(90deg, transparent, rgb(var(--ink-50)/.06), transparent); }
+
+  .table-wrap { @apply overflow-x-auto rounded-xl border border-ink-750 bg-ink-850; }
+  .tbl { @apply w-full min-w-[640px] text-right text-[13px]; }
+  .tbl thead th { @apply whitespace-nowrap border-b border-ink-750 bg-ink-900 px-4 py-3 text-[12px] text-ink-400; font-weight: 500; }
+  .tbl tbody td { @apply border-b border-ink-800 px-4 py-3 text-ink-100; }
+  .tbl tbody tr { @apply transition-colors hover:bg-ink-900; }
+  .tbl tbody tr:last-child td { @apply border-b-0; }
+}
+
+@layer utilities {
+  .text-grad { @apply text-firooze-600; }
+  .text-grad-z { @apply text-zaferan-600; }
+  .glass { @apply border border-ink-750 bg-ink-850/95 backdrop-blur-md; }
+  .ratio-saz { aspect-ratio: 1 / 1; }
+  .clamp-1 { display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+  .clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .clamp-3 { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .no-bar { scrollbar-width:none; }
+  .no-bar::-webkit-scrollbar { display:none; }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+  .press { @apply transition-opacity duration-150 active:opacity-70; }
+  .stagger > * { animation: fade-up .4s ease both; }
+  .stagger > *:nth-child(1){animation-delay:.03s} .stagger > *:nth-child(2){animation-delay:.06s}
+  .stagger > *:nth-child(3){animation-delay:.09s} .stagger > *:nth-child(4){animation-delay:.12s}
+  .stagger > *:nth-child(5){animation-delay:.15s} .stagger > *:nth-child(6){animation-delay:.18s}
+  .reveal-grid > * { opacity: 1; }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#123E63"/><stop offset="1" stop-color="#2C5A82"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D89552"/><stop offset="0.5" stop-color="#A8632B"/><stop offset="1" stop-color="#6E3D18"/></linearGradient>
+    <linearGradient id="fadeR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#123E63" stop-opacity="0.95"/><stop offset="0.62" stop-color="#123E63" stop-opacity="0.88"/><stop offset="1" stop-color="#123E63" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1400" height="420" fill="url(#bg)"/>
+  <g opacity="0.9"><g transform="translate(170 240) rotate(-14) scale(0.9)">
+  <path d="M-62 96 C-128 96 -150 46 -128 6 C-116 -18 -128 -58 -102 -78 C-76 -98 -26 -90 8 -90 C50 -90 78 -78 82 -36 C124 -32 138 18 108 60 C82 96 16 96 -62 96 Z" fill="url(#wood)" stroke="#E9C89A" stroke-width="2"/>
+  <rect x="-52" y="-34" width="60" height="13" rx="3" fill="#F2E6CE"/><rect x="-48" y="-2" width="60" height="13" rx="3" fill="#F2E6CE"/>
+  <rect x="-11" y="-296" width="22" height="212" rx="5" fill="#5C3A1C" stroke="#E9C89A" stroke-width="1.2"/>
+  <g stroke="#8FD8CF" stroke-width="1.6" opacity="0.45"><line x1="-11" y1="-120" x2="11" y2="-120"/><line x1="-11" y1="-155" x2="11" y2="-155"/><line x1="-11" y1="-190" x2="11" y2="-190"/><line x1="-11" y1="-225" x2="11" y2="-225"/></g>
+  <path d="M-18 -296 L18 -296 L21 -350 L-25 -350 Z" fill="url(#wood)" stroke="#E9C89A" stroke-width="1.2"/>
+  <g fill="#F7EEDC"><circle cx="-26" cy="-310" r="4.5"/><circle cx="-30" cy="-326" r="4.5"/><circle cx="21" cy="-308" r="4.5"/><circle cx="25" cy="-324" r="4.5"/></g>
+  <g stroke="#FFF8EA" stroke-width="1" opacity="0.7"><line x1="-6" y1="56" x2="-6" y2="-296"/><line x1="-2" y1="56" x2="-2" y2="-296"/><line x1="2" y1="56" x2="2" y2="-296"/><line x1="6" y1="56" x2="6" y2="-296"/></g>
+</g></g>
+  <rect width="1400" height="420" fill="url(#fadeR)"/>
+  <g stroke="#fff" stroke-opacity="0.06" fill="none" stroke-width="1.5"><circle cx="1150" cy="90" r="150"/><circle cx="1150" cy="90" r="105"/></g>
+  <circle cx="1230" cy="360" r="90" fill="#8FD8CF" fill-opacity="0.09"/>
+</svg>
